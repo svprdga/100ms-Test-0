@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:api100ms_test/data.dart';
-import 'package:api100ms_test/native_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:hmssdk_flutter/hmssdk_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -12,7 +11,6 @@ class MainModel extends ChangeNotifier
   // ***************************** INJECTED VARS *************************** //
 
   final Logger _log;
-  final NativeWrapper _native;
 
   // ********************************* VARS ******************************** //
 
@@ -42,13 +40,7 @@ class MainModel extends ChangeNotifier
 
   // ****************************** CONSTANTS ****************************** //
 
-  MainModel(this._log, this._native) {
-    _native.nativeStream.listen((event) {
-      if (event.method == NativeWrapper.dartEventScreenShareReady) {
-        notifyListeners();
-      }
-    });
-  }
+  MainModel(this._log);
 
   //***************************** PUBLIC METHODS *************************** //
 

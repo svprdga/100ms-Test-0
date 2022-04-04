@@ -1,5 +1,4 @@
 import 'package:api100ms_test/main_model.dart';
-import 'package:api100ms_test/native_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
@@ -11,12 +10,10 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   final log = Logger(printer: PrettyPrinter());
-  final native = NativeWrapper();
 
   final providers = [
     Provider<Logger>.value(value: log),
-    Provider<NativeWrapper>.value(value: native),
-    ChangeNotifierProvider(create: (_) => MainModel(log, native))
+    ChangeNotifierProvider(create: (_) => MainModel(log))
   ];
 
   runApp(
